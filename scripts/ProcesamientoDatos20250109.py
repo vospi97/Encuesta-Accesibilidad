@@ -1,5 +1,5 @@
 import pandas as pd
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 
 # Configuración de conexión usando SQLAlchemy
 engine = create_engine('postgresql://postgres:postgres@localhost/encuesta_accesibilidad')
@@ -15,3 +15,22 @@ data.columns = ['Cedula', 'Orden1', 'Respuesta1', 'Orden2', 'Respuesta2', 'Orden
 data.to_sql('tabla_20250109', engine, if_exists='replace', index=False)
 
 print("Datos cargados en 'tabla_20250109' en la base de datos.")
+
+# Insertar datos en la nueva tabla
+data.to_sql('tabla_20250109', engine, if_exists='replace', index=False)
+
+print("Datos cargados en 'tabla_20250109' en la base de datos.")
+
+# Renombrar columnas OrdenX a PreguntaXRespondida, solo si existen
+with engine.connect() as connection:
+    for i in range(1, 21):
+        if i not in [17, 18]:  # Excluir Orden17 y Orden18 ya que no existen
+            try:
+                operation = text(f"ALTER TABLE tabla_20250109 RENAME COLUMN Orden{i} TO Pregunta{i}Respondida;")
+                connection.execute(operation)
+                print(f"Columna 'Orden{i}' renombrada a 'Pregunta{i}Respondida'.")
+            except Exception as e:
+                print(f"No se pudo renombrar 'Orden{i}': {str(e)}")
+
+print("Proceso de renombramiento completado.")
+print("Columnas 'OrdenX' renombradas a 'PreguntaXRespondida'.")

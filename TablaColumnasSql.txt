@@ -275,5 +275,196 @@ FROM information_schema.columns
 WHERE table_name = 'respuestas_accesibilidad';
 
 
+#####################################################################################################3
+
+Columnas de tabla del 10 de enero de 2025
+
+
+CREATE TABLE tabla_20250109 (
+    Cedula TEXT,
+    Orden1 INTEGER,
+    Respuesta1 TEXT,
+    Orden2 INTEGER,
+    Respuesta2 TEXT,
+    Orden3 INTEGER,
+    Respuesta3 TEXT,
+    Orden4 INTEGER,
+    Respuesta4_42 TEXT,
+    Respuesta4_44 TEXT,
+    Respuesta4_53 TEXT,
+    Respuesta4_58 TEXT,
+    Respuesta4_64 TEXT,
+    Orden5 INTEGER,
+    Respuesta5 TEXT,
+    Orden6 INTEGER,
+    Respuesta6_43 TEXT,
+    Respuesta6_45 TEXT,
+    Respuesta6_55 TEXT,
+    Respuesta6_3 TEXT,
+    Respuesta6_59 TEXT,
+    Respuesta6_60 TEXT,
+    Respuesta6_62 TEXT,
+    Respuesta6_67 TEXT,
+    Respuesta6_74 TEXT,
+    Respuesta6_75 TEXT,
+    Orden7 INTEGER,
+    Respuesta7_46 TEXT,
+    Respuesta7_48 TEXT,
+    Respuesta7_48_Otro TEXT,
+    Respuesta7_3 TEXT,
+    Respuesta7_60 TEXT,
+    Respuesta7_63 TEXT,
+    Respuesta7_66 TEXT,
+    Respuesta7_73 TEXT,
+    Orden8 INTEGER,
+    Respuesta8_1 TEXT,
+    Respuesta8_49 TEXT,
+    Respuesta8_50 TEXT,
+    Respuesta8_51 TEXT,
+    Respuesta8_52 TEXT,
+    Respuesta8_54 TEXT,
+    Respuesta8_65 TEXT,
+    Respuesta8_68 TEXT,
+    Respuesta8_69 TEXT,
+    Respuesta8_70 TEXT,
+    Respuesta8_71 TEXT,
+    Respuesta8_72 TEXT,
+    Respuesta8_76 TEXT,
+    Orden9 INTEGER,
+    Respuesta9_10 TEXT,
+    Respuesta9_10_Otro TEXT,
+    Respuesta9_11 TEXT,
+    Respuesta9_11_Otro TEXT,
+    Respuesta9_2 TEXT,
+    Respuesta9_2_Otro TEXT,
+    Respuesta9_3 TEXT,
+    Respuesta9_3_Otro TEXT,
+    Respuesta9_4 TEXT,
+    Respuesta9_4_Otro TEXT,
+    Respuesta9_5 TEXT,
+    Respuesta9_5_Otro TEXT,
+    Respuesta9_6 TEXT,
+    Respuesta9_6_Otro TEXT,
+    Respuesta9_7 TEXT,
+    Respuesta9_7_Otro TEXT,
+    Respuesta9_8 TEXT,
+    Respuesta9_8_Otro TEXT,
+    Respuesta9_9 TEXT,
+    Respuesta9_9_Otro TEXT,
+    Orden10 INTEGER,
+    Respuesta10_12 TEXT,
+    Respuesta10_12_Otro TEXT,
+    Respuesta10_13 TEXT,
+    Respuesta10_13_Otro TEXT,
+    Respuesta10_14 TEXT,
+    Respuesta10_14_Otro TEXT,
+    Respuesta10_15 TEXT,
+    Respuesta10_15_Otro TEXT,
+    Respuesta10_16 TEXT,
+    Respuesta10_16_Otro TEXT,
+    Respuesta10_17 TEXT,
+    Respuesta10_17_Otro TEXT,
+    Respuesta10_18 TEXT,
+    Respuesta10_18_Otro TEXT,
+    Respuesta10_19 TEXT,
+    Respuesta10_19_Otro TEXT,
+    Respuesta10_20 TEXT,
+    Respuesta10_20_Otro TEXT,
+    Respuesta10_21 TEXT,
+    Respuesta10_21_Otro TEXT,
+    Respuesta10_22 TEXT,
+    Respuesta10_22_Otro TEXT,
+    Orden11 INTEGER,
+    Respuesta11_23 TEXT,
+    Respuesta11_23_Otro TEXT,
+    Respuesta11_24 TEXT,
+    Respuesta11_24_Otro TEXT,
+    Respuesta11_25 TEXT,
+    Respuesta11_25_Otro TEXT,
+    Respuesta11_26 TEXT,
+    Respuesta11_26_Otro TEXT,
+    Respuesta11_27 TEXT,
+    Respuesta11_27_Otro TEXT,
+    Respuesta11_28 TEXT,
+    Respuesta11_28_Otro TEXT,
+    Respuesta11_29 TEXT,
+    Respuesta11_29_Otro TEXT,
+    Respuesta11_30 TEXT,
+    Respuesta11_30_Otro TEXT,
+    Respuesta11_31 TEXT,
+    Respuesta11_31_Otro TEXT,
+    Respuesta11_32 TEXT,
+    Respuesta11_32_Otro TEXT,
+    Respuesta11_33 TEXT,
+    Respuesta11_33_Otro TEXT,
+    Orden12 INTEGER,
+    Respuesta12_34 TEXT,
+    Respuesta12_34_Otro TEXT,
+    Respuesta12_35 TEXT,
+    Respuesta12_35_Otro TEXT,
+    Respuesta12_36 TEXT,
+    Respuesta12_36_Otro TEXT,
+    Respuesta12_37 TEXT,
+    Respuesta12_37_Otro TEXT,
+    Respuesta12_38 TEXT,
+    Respuesta12_38_Otro TEXT,
+    Respuesta12_39 TEXT,
+    Respuesta12_39_Otro TEXT,
+    Respuesta12_40 TEXT,
+    Respuesta12_40_Otro TEXT,
+    Respuesta12_41 TEXT,
+    Respuesta12_41_Otro TEXT,
+    Orden13 INTEGER,
+    Respuesta13 TEXT,
+    Orden14 INTEGER,
+    Respuesta14 TEXT,
+    Orden15 INTEGER,
+    Respuesta15_47 TEXT,
+    Orden16 INTEGER,
+    Respuesta16 TEXT,
+    Orden19 INTEGER,
+    Respuesta19 TEXT,
+    Orden20 INTEGER,
+    Respuesta20 TEXT
+);
+
+-- Cambiar los nombres de las columnas:
+
+ALTER TABLE nueva_tabla RENAME COLUMN Orden1 TO Pregunta1Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden2 TO Pregunta2Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden3 TO Pregunta3Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden4 TO Pregunta4Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden5 TO Pregunta5Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden6 TO Pregunta6Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden7 TO Pregunta7Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden8 TO Pregunta8Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden9 TO Pregunta9Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden10 TO Pregunta10Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden11 TO Pregunta11Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden12 TO Pregunta12Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden13 TO Pregunta13Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden14 TO Pregunta14Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden15 TO Pregunta15Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden16 TO Pregunta16Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden19 TO Pregunta19Respondida;
+ALTER TABLE nueva_tabla RENAME COLUMN Orden20 TO Pregunta20Respondida;
+
+
+--
+DO $$
+DECLARE 
+   i INTEGER;
+BEGIN
+   FOR i IN 1..20 LOOP
+       IF i NOT IN (17, 18) THEN  -- Asegúrate de excluir Orden17 y Orden18 si no existen
+           BEGIN
+               EXECUTE format('ALTER TABLE tabla_20250109 RENAME COLUMN Orden%d TO Pregunta%dRespondida;', i, i);
+               RAISE NOTICE 'Columna Orden% renombrada a Pregunta%Respondida.', i, i;
+           EXCEPTION WHEN undefined_column THEN
+               RAISE NOTICE 'Columna Orden% no existe, no se pudo renombrar.', i;
+           END;
+       END IF;
+   END LOOP;
+END $$;
 
 

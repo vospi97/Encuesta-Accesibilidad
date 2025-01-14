@@ -1,0 +1,1 @@
+Descripción del proyecto, estructura de carpetas, cómo ejecutar los scripts
