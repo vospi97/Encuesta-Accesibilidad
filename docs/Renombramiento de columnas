@@ -1,0 +1,57 @@
+
+# Renombramiento de Columnas
+
+- **Fecha:** 2025-01-15
+- **Decisión:** Renombrar columnas en la tabla `tabla_20250109` para mejorar la claridad y facilitar el análisis de datos relacionados con la accesibilidad.
+
+### Comandos SQL Utilizados
+
+```sql
+ALTER TABLE tabla_20250109 RENAME COLUMN Respuesta4_42 TO DificultadVerCercaLejos;
+ALTER TABLE tabla_20250109 RENAME COLUMN Respuesta4_44 TO DificultadOir;
+ALTER TABLE tabla_20250109 RENAME COLUMN Respuesta4_53 TO DificultadMovilidad;
+ALTER TABLE tabla_20250109 RENAME COLUMN Respuesta4_58 TO DificultadCognitiva;
+ALTER TABLE tabla_20250109 RENAME COLUMN Respuesta4_64 TO DificultadInteraccionSocial;
+
+
+Los nuevos nombres reflejan más claramente el contenido de las respuestas, facilitando la interpretación de los datos en análisis posteriores.
+
+### Recomendaciones sobre el Momento del Cambio de Nombres
+
+Al  renombrar las columnas en la base de datos antes de trabajar con Visual Studio, los scripts en Python o SQL en Visual Studio ya trabajarán con los nuevos nombres, lo cual podría simplificar el código y hacerlo más legible desde el inicio. 
+
+Hay que asegurarse de que cualquier script o análisis previo que dependa de los nombres antiguos se actualice.
+
+
+Dado que mencionas que quieres documentar el proceso y que se trata de un análisis a largo plazo con múltiples entradas de datos, **recomendaría hacer los cambios en los nombres de las columnas antes de proceder con el análisis detallado en Visual Studio**. Esto asegurará que todos los datos futuros y análisis se manejen con una nomenclatura consistente y clara desde el principio.
+
+### Análisis y Reportes
+
+Para el análisis detallado en Visual Studio, puedes crear scripts que generen reportes basados en los nuevos nombres de columnas. Considera usar `pandas` para manipular y analizar datos, `matplotlib` o `seaborn` para visualizaciones, y `SQLAlchemy` para interactuar con la base de datos. Puedes organizar tus scripts para que se centren en diferentes aspectos del análisis, como:
+
+- **Cantidad de respuestas por unidad académica, vínculo universitario, campus.**
+- **Cruces según categorías y subcategorías de discapacidad.**
+- **Situaciones de dificultad según cada categoría.**
+- **Nivel de accesibilidad según diferentes criterios.**
+
+Asegúrate de que tus scripts sean lo suficientemente flexibles para manejar nuevas entradas de datos sin necesidad de cambios significativos, lo cual podría incluir la automatización de algunas tareas de limpieza y análisis.
+
+# EN el archivo NombreColumnas.py
+
+Modificaciones Aplicadas
+
+    Corrección de Mayúsculas/Minúsculas:
+        Se asegura que los nombres de las columnas se normalicen a minúsculas y se manejen correctamente en las consultas SQL con comillas dobles.
+
+    Copia de Seguridad:
+        Se crea una copia de seguridad de la tabla original con CREATE TABLE ... AS TABLE.
+
+    Log de Errores:
+        Los errores se registran en un archivo error_log.txt para facilitar el diagnóstico.
+
+    Estructuración del Código:
+        Se dividió en funciones claras para mejorar la legibilidad y la reutilización del código.
+
+    Mensajes Informativos:
+        Se incluyen mensajes claros en cada paso del proceso para rastrear su progreso.
+

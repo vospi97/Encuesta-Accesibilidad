@@ -1,0 +1,32 @@
+2025-01-15 17:00:59,541 - ERROR - Error al renombrar columnas: (psycopg2.errors.UndefinedColumn) no existe la columna «orden1»
+
+[SQL: ALTER TABLE tabla_20250109 RENAME COLUMN orden1 TO mayordeedadrespondida;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-01-15 17:14:39,191 - ERROR - Error al renombrar columnas: (psycopg2.errors.DuplicateColumn) ya existe la columna «cedula» en la relación «tabla_20250109»
+
+[SQL: ALTER TABLE tabla_20250109 RENAME COLUMN "cedula" TO "cedula";]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-01-15 17:26:12,524 - ERROR - Error al renombrar columnas: (psycopg2.errors.UndefinedColumn) no existe la columna «orden1»
+
+[SQL: ALTER TABLE tabla_20250109_camelcase RENAME COLUMN "orden1" TO "MayorDeEdadRespondida";]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-01-15 17:31:52,256 - ERROR - Error al renombrar columnas: (psycopg2.errors.DuplicateColumn) ya existe la columna «cedula» en la relación «tabla_20250109»
+
+[SQL: ALTER TABLE tabla_20250109 RENAME COLUMN "cedula" TO "cedula";]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-01-20 13:03:23,380 - ERROR - Error al renombrar columnas: (psycopg2.errors.UndefinedColumn) no existe la columna «orden1»
+
+[SQL: ALTER TABLE tabla_20250109 RENAME COLUMN "orden1" TO "MayorDeEdadRespondida";]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-01-20 13:06:07,084 - ERROR - Error al renombrar columnas: (psycopg2.errors.UndefinedColumn) no existe la columna «orden1»
+
+[SQL: ALTER TABLE tabla_20250109 RENAME COLUMN "orden1" TO "MayorDeEdadRespondida";]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-01-20 13:10:08,914 - ERROR - Error al renombrar columnas: (psycopg2.errors.DuplicateColumn) ya existe la columna «cedula» en la relación «tabla_20250109»
+
+[SQL: ALTER TABLE tabla_20250109 RENAME COLUMN "cedula" TO "cedula";]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-01-20 13:10:25,653 - ERROR - Error al renombrar columnas: (psycopg2.errors.DuplicateColumn) ya existe la columna «cedula» en la relación «tabla_20250109»
+
+[SQL: ALTER TABLE tabla_20250109 RENAME COLUMN "cedula" TO "cedula";]
+(Background on this error at: https://sqlalche.me/e/20/f405)
