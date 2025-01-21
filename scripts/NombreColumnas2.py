@@ -24,7 +24,7 @@ column_mapping = {
     'Respuesta4.53': 'DificultadMovilidad',
     'Respuesta4.58': 'DificultadCognitiva',
     'Respuesta4.64': 'DificultadInteraccionSocial',
-    # Aquí agregas el resto de mapeos
+    
     'Orden5': 'CondicionDiscapacidadRespondida',
     'Respuesta6': 'RespuestaCondicionDiscapacidad',
     'Orden6': 'CategoriaDiscapacidadRespondida',
@@ -165,21 +165,21 @@ column_mapping = {
 
     'Orden19': 'ComentariosFinalesRespondida2',
     'Respuesta19': 'ComentariosFinales2',
-    
+
     'Orden20' : 'ComentariosFinalesRespondida3',
     'Respuesta20': 'ComentariosFinales3'
 
 }
 
-def to_title_case(s):
-    # Función para convertir a Title Case, ignorando palabras que son completamente en mayúsculas o abreviaturas
+# Función para convertir a Title Case, ignorando palabras que son completamente en mayúsculas o abreviaturas
+def to_title_case(s):    
     return ' '.join(word.capitalize() if word.islower() else word 
                     for word in re.findall(r'\b\w+\b', s.replace('.', '_').replace('_', ' '))).replace(' ', '')
 
-# Aplicamos el mapeo y convertimos a Title Case
+# Aplicación de mapeo y conversión a Title Case
 data.columns = [to_title_case(column_mapping.get(col, col)) for col in data.columns]
 
-# Cambia los valores en las columnas de Orden
+# Cambia los valores en las columnas de 'OrdenX' por ceros y unos
 for col in data.columns:
     if re.match(r'^Orden\d+$', col):  # Comprueba si la columna es 'Orden' seguido por un número
         data[col] = data[col].apply(lambda x: 1 if pd.notna(x) and x != '' else 0)
@@ -191,7 +191,7 @@ try:
 except Exception as e:
     print(f"Error al cargar datos en la tabla: {e}")
 
-# Verificar las columnas existentes antes de renombrar
+# Verificación de las columnas existentes (antes de renombrarlas)
 with engine.connect() as connection:
     result = connection.execute(text("SELECT column_name FROM information_schema.columns WHERE table_name = 'tabla_20250109';"))
     existing_columns = [row[0] for row in result]
