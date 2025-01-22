@@ -177,14 +177,14 @@ column_mapping = {
 }
 
 Transformación de Valores
-Fecha: 2025-01-20
+Fecha: 2025-01-09
 Decisión: Transformar los valores de las columnas OrdenX a 1 si la pregunta fue respondida y 0 si no.
 Razón: 
 Uniformizar la manera de entender si una pregunta fue respondida, facilitando el análisis cuantitativo.
 Simplificar el conteo de respuestas y la evaluación de la participación.
 
 Unificación de Comentarios
-Fecha: 2025-01-20
+Fecha: 2025-01-09
 Decisión: Unificar Respuesta16, Respuesta19, y Respuesta20 en una sola columna ComentariosFinales.
 Razón:
 Reducir redundancia en la estructura de la base de datos al combinar comentarios similares o adicionales en una única entrada por encuesta.
@@ -208,7 +208,55 @@ Acceso a Datos: Solo el personal autorizado tiene acceso a la base de datos y a 
 
 Futuras Mejoras
 Automatización: Desarrollar un script que automatice la carga de nuevos datos y actualice el análisis con cada nueva encuesta.
-Análisis Multivariado: Implementar técnicas como ANOVA, PCA para entender mejor la relación entre variables.
+Análisis Multivariado: Implementar técnicas de análisis multivariado para entender mejor la relación entre variables.
 Feedback y Revisión: Planificar revisiones periódicas del análisis por pares para validar resultados y metodología.
 
 
+### Integración de Datos de Vinculación
+
+**Fecha:** 2025-01-13
+
+**Decisión:** Integrar datos de empleados y estudiantes con la encuesta de accesibilidad.
+
+**Razón:**
+- Para permitir análisis cruzados entre la información de vinculación con la universidad (empleado, estudiante) y las respuestas de la encuesta.
+- Asegurar que cada respuesta de la encuesta pueda ser contextualizada según el rol del respondiente dentro de la universidad.
+
+**Procedimiento:**
+- Se leyeron los archivos CSV `empleados_encuestados.csv` y `estudiantes_encuestados.csv` desde la carpeta `data/20250109`.
+- Se renombraron las columnas de cédula para consistencia (`CEDULA_EMPLEADO` a `Cedula` en empleados y `CEDULA` a `Cedula` en estudiantes).
+- Se unieron estos datos con los de la encuesta almacenados en PostgreSQL en la tabla `tabla_20250109`.
+- El resultado se guardó primero en un archivo CSV (`encuesta_con_vinculo.csv`) y luego se cargó en PostgreSQL en una nueva tabla `encuesta_con_vinculo`.
+
+**Script Utilizado:** `scripts/carga_integracion_vinculo.py`
+
+**Notas:**
+- La nueva tabla permite análisis según el tipo de vínculo con la universidad.
+- Se decidió usar `if_exists='replace'` para asegurar que la tabla siempre refleje los datos más recientes.
+
+
+### Procesamiento Individual de Cuadros de Salida
+
+**Fecha: 2025-01-22
+
+**Decisión:** Procesar cada cuadro de salida en scripts y archivos CSV separados.
+
+**Razón:**
+- **Modularidad:** Permite el mantenimiento y actualización de cada cuadro de manera independiente, facilitando la corrección de errores o la adición de nuevas métricas sin afectar a otros análisis.
+- **Escalabilidad:** A medida que se añadan más cuadros o se modifiquen las preguntas de la encuesta, este enfoque facilita la incorporación de nuevos análisis.
+- **Control de Versiones:** Es más sencillo rastrear cambios en cada cuadro cuando cada uno tiene su propio archivo, lo cual es útil para análisis longitudinales o auditorías.
+- **Eficiencia en la Actualización:** Cuando se reciben nuevas respuestas, podemos actualizar solo los cuadros afectados sin necesidad de recalcular todo el análisis.
+
+**Procedimiento:**
+- Cada cuadro tiene su propio script Python dentro de la carpeta `scripts`.
+- Estos scripts cargan datos desde la base de datos PostgreSQL y generan un archivo CSV específico para cada cuadro en la carpeta `outputs/20250109/`.
+- Al terminar, un script final se encargará de combinar todos estos archivos CSV en uno solo para una visualización más compacta.
+
+**Scripts Utilizados:**
+- `scripts/cuadro_1.py`, `scripts/cuadro_2.py`, etc.
+- `scripts/combinar_cuadros.py` para la consolidación final.
+
+**Notas:**
+- Los nombres de los archivos CSV seguirán el formato `cuadro_X.csv`, donde X es el número del cuadro.
+- La combinación final de los CSV en un archivo único facilitará la generación de gráficos y presentaciones, permitiendo un análisis más integral sin perder la granularidad del trabajo individual en cada cuadro.
+- Es importante mantener la documentación actualizada en `decisions.txt` para cada modificación o adición de cuadros, describiendo cualquier cambio en la lógica de análisis o en la estructura de datos.
