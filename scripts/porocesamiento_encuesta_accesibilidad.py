@@ -24,7 +24,7 @@ column_mapping = {
     'Respuesta4.53': 'DificultadMovilidad',
     'Respuesta4.58': 'DificultadCognitiva',
     'Respuesta4.64': 'DificultadInteraccionSocial',
-    # Aquí agregas el resto de mapeos
+    
     'Orden5': 'CondicionDiscapacidadRespondida',
     'Respuesta6': 'RespuestaCondicionDiscapacidad',
     'Orden6': 'CategoriaDiscapacidadRespondida',
@@ -172,26 +172,26 @@ column_mapping = {
 }
 
 def to_title_case(s):
-    # Función para convertir a Title Case, ignorando palabras que son completamente en mayúsculas o abreviaturas
+    # Función para convertir nombres de columnas a Title Case
     return ' '.join(word.capitalize() if word.islower() else word 
                     for word in re.findall(r'\b\w+\b', s.replace('.', '_').replace('_', ' '))).replace(' ', '')
 
-# Aplicamos el mapeo y convertimos a Title Case
+# Aplicación del mapeo y conversión a Title Case para los nombres de las columnas
 data.columns = [to_title_case(column_mapping.get(col, col)) for col in data.columns]
 
-# Cambia los valores en las columnas de Orden
+# Transformación de valores en columnas 'OrdenX' a 1 si hay respuesta, 0 si no
 for col in data.columns:
     if re.match(r'^Orden\d+$', col):  # Comprueba si la columna es 'Orden' seguido por un número
         data[col] = data[col].apply(lambda x: 1 if pd.notna(x) and x != '' else 0)
 
-# Insertar datos en la nueva tabla
+# Inserción de datos en la tabla de la base de datos
 try:
     data.to_sql('tabla_20250109', engine, if_exists='replace', index=False)
     print("Datos cargados y tabla creada o actualizada en 'tabla_20250109' en la base de datos.")
 except Exception as e:
     print(f"Error al cargar datos en la tabla: {e}")
 
-# Verificar las columnas existentes antes de renombrar
+# Verificación de las columnas existentes antes de intentar renombrar
 with engine.connect() as connection:
     result = connection.execute(text("SELECT column_name FROM information_schema.columns WHERE table_name = 'tabla_20250109';"))
     existing_columns = [row[0] for row in result]
@@ -216,6 +216,7 @@ with engine.connect() as connection:
         print(f"Error en el proceso de renombramiento: {e}")
 
 def verify_columns(connection):
+    # Función para verificar que todas las columnas esperadas están presentes en la tabla
     result = connection.execute(text("""
         SELECT column_name 
         FROM information_schema.columns 
@@ -231,6 +232,7 @@ def verify_columns(connection):
     if extra_columns:
         print(f"Columnas adicionales no esperadas: {', '.join(extra_columns)}")
 
+# Verificación de la estructura de la tabla en la base de datos
 with engine.connect() as connection:
     verify_columns(connection)
 

@@ -468,3 +468,22 @@ BEGIN
 END $$;
 
 
+-- NOMBRES DE LAS COLUMNAS
+
+column_mapping = {
+    'Cedula': 'Cedula',
+    'Orden1': 'MayorDeEdadRespondida',
+    'Respuesta1': 'RespuestaMayorDeEdad',
+    'Orden2': 'AutorizacionMenorRespondida',
+    'Respuesta2': 'AutorizacionMenor',
+    'Orden3': 'ConsentimientoInformadoRespondida',
+    'Respuesta3': 'RespuestaConsentimiento',
+    'Orden4': 'DificultadesPermanentesRespondida',
+    'Respuesta4_42': 'DificultadVerCercaLejos',
+    'Respuesta4_44': 'DificultadOir',
+    'Respuesta4_53': 'DificultadMovilidad',
+    'Respuesta4_58': 'DificultadCognitiva',
+    'Respuesta4_64': 'DificultadInteraccionSocial',
+    
+    # Aquí agregarías el resto de mapeos
+

@@ -6,7 +6,8 @@ import re
 # Configuración de conexión usando SQLAlchemy
 engine = create_engine('postgresql://postgres:postgres@localhost/encuesta_accesibilidad')
 
-# Leer datos desde un archivo CSV
+# Lectura del archivo CSV de respuestas de la encuesta previa limpieza de datos
+# utilizando node.js
 data = pd.read_csv('data/20250109/ArchivoRespuestasFinal-4.csv')
 
 # Ajusta los nombres de las columnas para que coincidan con los de la tabla en la base de datos
@@ -26,8 +27,6 @@ column_mapping = {
     'Respuesta4_64': 'DificultadInteraccionSocial',
     # Aquí agregarías el resto de mapeos, pero solo hasta Orden4 por ahora
 }
-
-# Asegúrate de que los nombres de columnas en el DataFrame coincidan con la base de datos
 # Aplicamos el mapeo y convertimos a minúsculas para evitar problemas de mayúsculas/minúsculas
 data.columns = [column_mapping.get(col, col).lower() for col in data.columns]
 
