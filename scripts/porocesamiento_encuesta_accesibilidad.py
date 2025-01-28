@@ -24,9 +24,9 @@ column_mapping = {
     'Respuesta4.53': 'DificultadMovilidad',
     'Respuesta4.58': 'DificultadCognitiva',
     'Respuesta4.64': 'DificultadInteraccionSocial',
-    
+    'Respuesta5': 'CondicionDiscapacidad',
     'Orden5': 'CondicionDiscapacidadRespondida',
-    'Respuesta6': 'RespuestaCondicionDiscapacidad',
+    
     'Orden6': 'CategoriaDiscapacidadRespondida',
     'Respuesta6.43': 'DiscapacidadBajaVision',
     'Respuesta6.45': 'DiscapacidadMultiple',
